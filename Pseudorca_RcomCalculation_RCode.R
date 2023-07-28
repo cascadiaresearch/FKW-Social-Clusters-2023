@@ -24,7 +24,7 @@ library(ggrepel)
 
 # check working directory - this will change depending on your working directory location #
 getwd()
-setwd("C:/Users/Annettte Harnish/Documents/Cascadia/Social Networks Rcom R files/")
+setwd()
 
 # load in csv of data, in GBI format #
 data <- read.csv("Pseudorca_PQ2Dist2Seen5_19992021.csv", header=T, row.names = 1)
@@ -79,6 +79,8 @@ plot(assoc.g2,
 
 
 # let's take a look at community structure! #
+# note that clusters are not consistent across community assignment methods (i.e. an individual that is C1 in the LEC method, and C1 in the Louvain method 
+# might not be in the same cluster - you always want to confirm cluster ID using a network graphic to ensure that you're looking at the same clusters #
 # We're going to start with a modularity-based approach, leading.eigenvector.community() #
 # This approach is outlined in Newman 2006 #
 lec = leading.eigenvector.community(assoc.g)
@@ -250,56 +252,6 @@ ggplot() +
 ggsave("Pseudorca_Dist2+PQ2+1999-2021Seen5+_Walktrapclusters_filtered_withoutlegend.jpg", dpi=600)
 
 
-
-
-
-
-
-
-# base R plots with HWI's <0.3 filtered out #
-# I didn't use these in the manuscript, but am keeping the code here for documentation #
-# lec #
-plot(assoc.g2, 
-     layout=layout2*1.5,
-     vertex.label="",
-     vertex.size=8, 
-     rescale=F, vertex.color=node.colors) 
-# eb #
-node.colorseb = membership(eb)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorseb)
-# fg #
-node.colorsfg = membership(fg)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorsfg)
-# wc #
-node.colorswc = membership(wc)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorswc)
-# sc #
-node.colorssc = membership(sc)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorssc)
-# lpc #
-node.colorslpc = membership(lpc)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorslpc)
-# cl #
-node.colorscl = membership(cl)
-plot(assoc.g2, 
-     layout=layout2*1.5, 
-     vertex.label="", vertex.size=8, 
-     rescale=F, vertex.color=node.colorscl)
 
 
 
