@@ -1,6 +1,8 @@
 ## Network and Histogram graphics for Pseudorca social cluster work ##
-## isolated here for ease of editing ##
-## written by AEH, September 2022 ##
+## written by AEH, September 2022 for Cascadia Research Collective ##
+
+# Data for the histograms/networks is generated in the Pseudorca_RcomCalculation_RCode script, also included in this repository #
+# In this script, that data is plotted using ggplot2 #
 
 # load up required packages #
 library(ggplot2)
